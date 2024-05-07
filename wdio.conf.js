@@ -51,7 +51,9 @@ export const config = {
     //
     capabilities: [{
         browserName: 'chrome'
-    }],
+    }, {
+        browserName: 'MicrosoftEdge'
+    }],
 
     //
     // ===================
@@ -252,8 +254,11 @@ export const config = {
      * @param {number}             result.duration  duration of scenario in milliseconds
      * @param {object}             context          Cucumber World object
      */
-    // afterStep: function (step, scenario, result, context) {
-    // },
+    afterStep: async function (step, scenario, result, context) {
+        if (!result.passed) {
+            await browser.saveScreenshot('./screenshot/failed-test.png')
+        }
+    },
     /**
      *
      * Runs after a Cucumber Scenario.

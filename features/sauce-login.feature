@@ -1,6 +1,7 @@
+@websauce
 Feature: Sauce login test
 
-   Scenario: User login successfully
+   Background:
         Given user navigates to the login page
         When user enters valid credentials
         Then user should be logged in successfully
